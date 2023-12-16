@@ -9,6 +9,9 @@ import lombok.Setter;
 public class TokenDto {
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Long userId;
+
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private String username;
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)

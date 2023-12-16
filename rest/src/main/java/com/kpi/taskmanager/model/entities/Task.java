@@ -1,5 +1,6 @@
 package com.kpi.taskmanager.model.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +13,8 @@ public class Task {
 
     @Id
     private String id;
+
+    private String title;
 
     private String description;
 

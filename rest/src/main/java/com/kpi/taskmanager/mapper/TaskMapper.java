@@ -1,6 +1,5 @@
 package com.kpi.taskmanager.mapper;
 
-import com.kpi.taskmanager.model.auth.Authorities;
 import com.kpi.taskmanager.model.dto.TaskDto;
 import com.kpi.taskmanager.model.entities.Task;
 import org.mapstruct.Mapper;
