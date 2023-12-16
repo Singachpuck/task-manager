@@ -1,6 +1,5 @@
 package com.kpi.taskmanager.model.entities;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
