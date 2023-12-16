@@ -1,0 +1,42 @@
+<app-notification></app-notification>
+<app-header [requestUser]="true"></app-header>
+<section class="container py-5 d-flex flex-column">
+  <h1 class="mb-4 text-center">Your Tasks</h1>
+  <div class="w-50 mx-auto">
+    <div class="card-wrapper">
+      <div class="card mb-4" *ngFor="let task of tasks">
+        <form action="#" [formGroup]="editTaskForms[task.id !== null ? task.id : 0]" (ngSubmit)="onTaskUpdate($event, task.id)">
+          <div class="card-body">
+            <div class="card-title">
+              <input type="text" class="form-control" formControlName="title">
+            </div>
+            <div class="card-text mb-3">
+              <textarea class="form-control" rows="5" formControlName="description"></textarea>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-warning me-2" type="submit">Edit</button>
+              <button class="btn btn-danger" type="button" (click)="onTaskDelete($event, task.id)">Delete</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="add-card-wrapper">
+      <div class="card">
+        <form action="#" [formGroup]="createTaskForm" (ngSubmit)="onTaskCreate($event)">
+          <div class="card-body">
+            <div class="card-title">
+              <input type="text" class="form-control" formControlName="title">
+            </div>
+            <div class="card-text mb-3">
+              <textarea class="form-control" rows="5" formControlName="description"></textarea>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-success" type="submit">Add task</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

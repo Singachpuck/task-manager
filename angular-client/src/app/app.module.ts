@@ -12,6 +12,7 @@ import {authInterceptorProviders} from "./helpers/auth.interceptor";
 import {xhrInterceptorProviders} from "./helpers/xhr.interceptor";
 import {NotificationComponent} from "./components/notification/notification.component";
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import {ProfileComponent} from "./components/profile/profile.component";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     HeaderComponent,
     SignupComponent,
     NotificationComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

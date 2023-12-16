@@ -4,6 +4,7 @@ import {UtilService} from "./util.service";
 const TOKEN_KEY = 'auth-token';
 const EXPIRES_KEY = 'expires_in';
 const USER_KEY = 'auth-user';
+const USER_ID_KEY = 'auth-user-id';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +16,14 @@ export class TokenStorageService {
     window.sessionStorage.clear();
   }
 
-  public saveToken(data: { username: string, token: string, expiresIn: number }): void {
+  public saveToken(data: { userId: number, username: string, token: string, expiresIn: number }): void {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.removeItem(EXPIRES_KEY);
     window.sessionStorage.removeItem(USER_KEY);
+    window.sessionStorage.removeItem(USER_ID_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, data.token);
     window.sessionStorage.setItem(USER_KEY, this.util.encodeBase64(data.username));
+    window.sessionStorage.setItem(USER_ID_KEY, data.userId.toString());
     let expires_in = new Date();
     expires_in.setSeconds(expires_in.getSeconds() + data.expiresIn);
     window.sessionStorage.setItem(EXPIRES_KEY, this.util.encodeBase64(expires_in.toISOString()));
@@ -28,6 +31,10 @@ export class TokenStorageService {
 
   public getToken(): string | null {
     return window.sessionStorage.getItem(TOKEN_KEY);
+  }
+
+  public getUserId(): string | null {
+    return window.sessionStorage.getItem(USER_ID_KEY);
   }
 
   public getUsername(): string | null {
