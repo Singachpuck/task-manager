@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  postgres_instance:
+    image: postgres:15-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=task-manager
+  mongo_instance:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+  angular_client:
+    build: ./angular-client
+    ports:
+      - 80:80
+  rest:
+    build: ./rest
+    ports:
+      - 8080:8080
+    environment:
+      - DB_HOST=postgres_instance:5432
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=${DB_PASSWORD}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - MONGO_HOST=mongo_instance:27017

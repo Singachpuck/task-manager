@@ -33,7 +33,7 @@ public class SecurityConfig implements WebMvcConfigurer {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .cors().configurationSource(request -> {
                     final CorsConfiguration config = new CorsConfiguration();
-                    config.setAllowedOrigins(List.of("http://localhost:4200"));
+                    config.setAllowedOrigins(List.of("http://localhost:4200", "http://localhost"));
                     config.setAllowedMethods(List.of("*"));
                     config.setAllowCredentials(true);
                     config.setAllowedHeaders(List.of("*"));
